@@ -1,0 +1,14 @@
+---
+ - name: Configure server monitor
+   hosts: docker
+   remote_user: root
+   roles:
+     - docker
+     - influxdb
+     - grafana
+
+ - name: Configure Telegraf service
+   hosts: monitoring
+   remote_user: root
+   roles:
+     - telegraf

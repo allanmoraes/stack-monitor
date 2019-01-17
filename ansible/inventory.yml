@@ -1,0 +1,5 @@
+ [docker]
+ stackmonitor01 ansible_host=45.56.72.145
+
+ [monitoring]
+ webserver01 ansible_host=50.116.16.241

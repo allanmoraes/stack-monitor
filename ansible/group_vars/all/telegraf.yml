@@ -1,0 +1,5 @@
+---
+
+  telegraf_db: telegraf
+  telegraf_user: telegraf
+  telegraf_pass: DevOps2019
