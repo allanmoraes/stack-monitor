@@ -1,0 +1,43 @@
+# Based on https://docs.docker.com/install/linux/docker-ce/ubuntu/
+
+---
+ - name: Run apt-get update
+   apt:
+     update_cache: yes
+
+ - name: Uninstall old versions
+   apt:
+     name: "{{ packages }}"
+     state: absent
+   vars:
+     packages:
+     - docker
+     - docker-engine
+     - docker.io
+     - containerd 
+     - runc
+
+ - name: Install packages to allow apt to use a repository over HTTPS
+   apt:
+     name: "{{ packages }}"
+   vars:
+     packages:
+     - apt-transport-https
+     - ca-certificates 
+     - curl
+     - gnupg2
+     - software-properties-common
+
+ - name: Add Docker’s official GPG key
+   shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+
+ - name: Add Docker’s official repository
+   shell: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+ - name: Run apt-get update
+   apt:
+     update_cache: yes
+
+ - name: Install the latest version of Docker CE
+   apt:
+     name: docker-ce 
