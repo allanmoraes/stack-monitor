@@ -1,4 +1,5 @@
 # Based on https://docs.docker.com/install/linux/docker-ce/ubuntu/
+#          https://docs.docker.com/compose/install/
 
 ---
  - name: Run apt-get update
@@ -41,3 +42,13 @@
  - name: Install the latest version of Docker CE
    apt:
      name: docker-ce 
+
+ - name: Download Docker Compose
+   shell: curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+ - name: Apply executable permissions to the binary docker-compose
+   file:
+     path: /usr/local/bin/docker-compose
+     owner: root
+     group: root
+     mode: 0750

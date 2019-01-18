@@ -3,9 +3,9 @@
    hosts: docker
    remote_user: root
    roles:
-     - docker
-     - influxdb
-     - grafana
+     #- docker
+     #- influxdb
+     #- grafana
 
  - name: Configure Telegraf service
    hosts: monitoring

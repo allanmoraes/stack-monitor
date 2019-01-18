@@ -1,18 +1,15 @@
-#Based on https://hub.docker.com/_/influxdb
-
 ---
- - name: Create
-   docker_container:
-    name: influxdb
-    image: influxdb
-    ports:
-     - "8086:8086"
-     - "8083:8083"
-    env:
-        INFLUXDB_DB: "{{ telegraf_db }}"
-        INFLUXDB_ADMIN_ENABLED: "true"
-        INFLUXDB_ADMIN_USER: "{{ influxdb_admin_user }}"
-        INFLUXDB_ADMIN_PASSWORD: "{{ telegraf_pass }}"
-        INFLUXDB_USER: "{{ telegraf_user }}"
-        INFLUXDB_USER_PASSWORD: "{{ influxdb_user_password }}"
-    command: /init-influxdb.sh
+ - name: Create directory
+   file: 
+    path: /opt/influxdb
+    state: directory
+
+ - name: Copy docker-compose.yml
+   template:
+     src: docker-compose.yml.j2
+     dest: /opt/influxdb/docker-compose.yml
+
+ - name: Docker-compose up container
+   shell: docker-compose up -d
+   args:
+     chdir: /opt/influxdb

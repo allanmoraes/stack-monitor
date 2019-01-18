@@ -1,0 +1,17 @@
+version: '3.1' 
+services:   
+  influxdb:     
+    container_name: influxdb   
+    image: "influxdb"
+    ports:
+     - "8086:8086"
+     - "8083:8083"
+    environment:
+      - INFLUXDB_DB={{ telegraf_db }}
+      - INFLUXDB_ADMIN_ENABLED=true
+      - INFLUXDB_ADMIN_USER={{ influxdb_admin_user }}
+      - INFLUXDB_ADMIN_PASSWORD={{ telegraf_pass }}
+      - INFLUXDB_USER={{ telegraf_user }}
+      - INFLUXDB_USER_PASSWORD={{ influxdb_user_password }}
+      - INFLUXDB_HTTP_AUTH_ENABLED=true 
+    restart: always
