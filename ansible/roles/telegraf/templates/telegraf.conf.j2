@@ -20,7 +20,7 @@
 ###############################################################################
 
 [[outputs.influxdb]]
-   urls = ["http://{{ hostvars['docker']['ansible_host'] }}:8086"]
+   urls = ["http://{{ influx_address }}:8086"]
    database = "{{ telegraf_db }}"
    skip_database_creation = true
    retention_policy = "autogen"
