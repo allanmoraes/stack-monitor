@@ -1,0 +1,10 @@
+version: '3.1' 
+services:   
+  grafana:     
+    container_name: grafana   
+    image: "grafana/grafana"
+    ports:
+     - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD={{ gf_secutiry_admin_password }}
+    restart: always
