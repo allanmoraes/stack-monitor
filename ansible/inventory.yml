@@ -1,8 +1,8 @@
 [docker]
-STACKMONITOR01 ansible_host=45.56.72.145
+STACKMONITOR01 ansible_host=10.64.114.131
 
 [monitoring]
-WEBSERVER01 ansible_host=50.116.16.241
+WEBSERVER01 ansible_host=10.64.114.130
 
 [monitoring:vars]
-influx_address=45.56.72.145
+influx_address=10.64.114.131

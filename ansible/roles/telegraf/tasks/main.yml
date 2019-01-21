@@ -21,8 +21,8 @@
      dest: /etc/telegraf/telegraf.conf
      backup: yes
   
- - name: Start and enable the Telegraf service
+ - name: Restart and enable the Telegraf service
    systemd:
      enabled: yes
-     state: started
+     state: restarted
      name: telegraf
