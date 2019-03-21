@@ -1,15 +1,28 @@
 ---
- - name: Create directory
-   file: 
-    path: /opt/grafana
-    state: directory
+ - name: Grafana | Add Grafana user
+   user:
+    name: "{{ grafana_sys_user }}"
+    uid: 3000
+    shell: /bin/false
+    create_home: yes
+    home: "{{ grafana_path }}"
 
- - name: Copy docker-compose.yml
+ - name: Grafana | Create directory
+   file: 
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ grafana_sys_user }}"
+    group: "{{ grafana_sys_user }}"
+    mode: 0750
+   with_items:
+     - "{{ grafana_volume_data }}"
+
+ - name: Grafana | Copy docker-compose.yml
    template:
      src: docker-compose.yml.j2
-     dest: /opt/grafana/docker-compose.yml
+     dest: "{{ grafana_path }}/docker-compose.yml"
 
- - name: Docker-compose up container
+ - name: Grafana | Docker-compose up container
    shell: docker-compose up -d
    args:
-     chdir: /opt/grafana
+     chdir: "{{ grafana_path }}"

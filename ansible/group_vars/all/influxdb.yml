@@ -1,4 +1,9 @@
 --- 
 
- influxdb_admin_user: admin
- influxdb_user_password: DevOps2019
+ influx_admin_user: 
+ influx_user_password: 
+ influx_external_port: 8086
+ influx_path: /home/influxdb
+ influx_volume_data: "{{ influx_path }}/data"
+ influx_deploy: false
+ grafana_sys_user: influxdb

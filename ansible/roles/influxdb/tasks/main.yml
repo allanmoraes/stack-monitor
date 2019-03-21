@@ -1,15 +1,28 @@
 ---
- - name: Create directory
-   file: 
-    path: /opt/influxdb
-    state: directory
+ - name: InfluxDB | Add InfluxDB user
+   user:
+    name: "{{ influx_sys_user }}"
+    uid: 4000
+    shell: /bin/false
+    create_home: yes
+    home: "{{ influx_path }}"
 
- - name: Copy docker-compose.yml
+ - name: InfluxDB | Create directory
+   file: 
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ influx_sys_user }}"
+    group: "{{ influx_sys_user }}"
+    mode: 0750
+   with_items:
+     - "{{ influx_volume_data }}"
+
+ - name: InfluxDB | Copy docker-compose.yml
    template:
      src: docker-compose.yml.j2
-     dest: /opt/influxdb/docker-compose.yml
+     dest: "{{ influx_path }}/docker-compose.yml"
 
- - name: Docker-compose up container
+ - name: InfluxDB | Docker-compose up container
    shell: docker-compose up -d
    args:
-     chdir: /opt/influxdb
+     chdir: "{{ influx_path }}"

@@ -1,0 +1,8 @@
+[docker]
+10.64.114.116
+
+[monitoring]
+10.64.114.117
+
+[monitoring:vars]
+influx_address=10.64.114.116

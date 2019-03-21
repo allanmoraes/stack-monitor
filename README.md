@@ -20,7 +20,7 @@ sudo apt install -y ansible
 ```
 
 ## Para rodar o Ansible
-- Adicionar os nomes e IPs dos servidores em 
+- Adicionar os IPs dos servidores em 
   - ansible/
     - inventory.yml
 - Trocar as senhas do InfluxDB e Grafana em:

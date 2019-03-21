@@ -1,28 +1,28 @@
 # Based on https://docs.influxdata.com/telegraf/v1.9/introduction/installation/
 
 ---
- - name: Add InfluxDB’s official GPG key
+ - name: Telegraf | Add InfluxDB’s official GPG key
    shell: curl -sL https://repos.influxdata.com/influxdb.key | apt-key add -
 
- - name: Add InfluxDB’s official repository
+ - name: Telegraf | Add InfluxDB’s official repository
    shell: add-apt-repository "deb https://repos.influxdata.com/ubuntu $(lsb_release -cs) stable"
 
- - name: Run apt-get update
+ - name: Telegraf | Run apt-get update
    apt:
      update_cache: yes
 
- - name: Install the latest version of Telegraf
+ - name: Telegraf | Install the latest version of Telegraf
    apt:
      name: telegraf
 
- - name: Copy the Telegraf configuration file
+ - name: Telegraf | Enable the Telegraf service
+   systemd:
+     enabled: yes
+     name: telegraf
+
+ - name: Telegraf | Copy the Telegraf configuration file
    template:
      src: telegraf.conf.j2
      dest: /etc/telegraf/telegraf.conf
      backup: yes
-  
- - name: Restart and enable the Telegraf service
-   systemd:
-     enabled: yes
-     state: restarted
-     name: telegraf
+   notify: restart telegraf
