@@ -27,6 +27,7 @@ sudo apt install -y ansible
   - ansible/group_vars/all/
     - influxdb.yml
     - grafana.yml
+    - telegraf.yml
 - Rodar o playbook:
 
 ```bash
