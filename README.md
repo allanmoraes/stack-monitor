@@ -26,27 +26,16 @@ sudo apt install -y ansible
 - Trocar as senhas do InfluxDB e Grafana em:
   - ansible/group_vars/all/
     - influxdb.yml
+      - influx_user_password
+      - influx_address
     - grafana.yml
+      - grafana_secutiry_admin_password
+    - telegraf.yml
+      - telegraf_pass
 - Rodar o playbook:
 
 ```bash
-ansible-playbook main.yml -i inventory.yml
+make deploy
 ```
 ### Configurando o Grafana
-- Acessar http://localhost:3000/
-- Na tela inicial do Grafana, clique em *Configuration > Data Sources > Add Data Source*
-- Escolha a opção *InfluxDB*
-- Você será redirecionado para a tela de confguração do *Data Source*
-- Você deve fornecer:
-  - Settings
-    - Name: Nome para identificação
-  - HTTP
-    - URL: Endereço do InfluxDB
-    - Access: Server (Default)
-  - Auth
-    - With Credentials
-  - InfluxDB Details
-    - Database: telegraf
-    - User: telegraf
-    - Password: ********
-- Clique em *Save & Test*. Se a mensagem *Data source is working* aparecer a configuração está correta.
+- Acessar http://YOURIPADDRESS:3000/
