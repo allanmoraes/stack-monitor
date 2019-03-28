@@ -1,4 +1,4 @@
-deploy-all:
+deploy:
 	ansible-playbook main.yml -i inventory \
 		-t stack,telegraf \
 		-e "docker_deploy=true" \

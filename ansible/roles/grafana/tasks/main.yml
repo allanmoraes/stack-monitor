@@ -26,3 +26,19 @@
    shell: docker-compose up -d
    args:
      chdir: "{{ grafana_path }}"
+
+ - name: Grafana | Create influxdb datasource
+   grafana_datasource:
+     access: "direct"
+     name: "Telegraf"
+     grafana_url: "http://{{ grafana_address }}"
+     grafana_user: "admin"
+     grafana_password: "{{ grafana_secutiry_admin_password }}"
+     org_id: "1"
+     ds_type: "influxdb"
+     url: "http://{{ influx_address }}:{{ influx_external_port }}"
+     database: "{{ telegraf_db }}"
+     user: "{{ telegraf_user }}"
+     password: "{{ telegraf_pass }}"
+     with_credentials: "yes"
+     time_interval: ">10s"
