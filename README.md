@@ -35,7 +35,8 @@ sudo apt install -y ansible
 - Rodar o playbook:
 
 ```bash
-make deploy
+$ cd ansible
+$ make deploy
 ```
 ### Configurando o Grafana
 - Acessar http://YOURIPADDRESS:3000/
