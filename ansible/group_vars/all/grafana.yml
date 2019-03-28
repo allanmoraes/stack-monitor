@@ -7,3 +7,4 @@
   grafana_volume_data: "{{ grafana_path }}/data"
   grafana_deploy: false
   grafana_sys_user: grafana
+  grafana_create_datasource: false

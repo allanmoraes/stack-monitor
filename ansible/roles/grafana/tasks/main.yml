@@ -29,7 +29,6 @@
 
  - name: Grafana | Create influxdb datasource
    grafana_datasource:
-     access: "direct"
      name: "Telegraf"
      grafana_url: "http://{{ grafana_address }}"
      grafana_user: "admin"
@@ -42,3 +41,5 @@
      password: "{{ telegraf_pass }}"
      with_credentials: "yes"
      time_interval: ">10s"
+   when:
+     - grafana_create_datasource
