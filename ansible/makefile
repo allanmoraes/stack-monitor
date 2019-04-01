@@ -2,8 +2,9 @@ deploy:
 	ansible-playbook main.yml -i inventory \
 		-t stack,telegraf \
 		-e "docker_deploy=true" \
+		-e "influx_deploy=true" \
 		-e "grafana_deploy=true" \
-		-e "influx_deploy=true" -k
+		-e "grafana_create_datasource=true" -k
 
 deploy-telegraf:
 	ansible-playbook main.yml -i inventory \
