@@ -38,5 +38,5 @@ sudo apt install -y ansible
 $ cd ansible
 $ make deploy
 ```
-### Configurando o Grafana
-- Acessar http://YOURIPADDRESS:3000/
+
+Para acessar o Grafana, basta digitar no navegador http://YOURIPADDRESS:3000/
