@@ -19,7 +19,7 @@ deploy-grafana:
 	ansible-playbook site.yml -i production \
                 -t stack \
                 -e "grafana_deploy=true" \
-				-e "grafana_create_datasource=true" -k
+		-e "grafana_create_datasource=true" -k
 
 deploy-grafana-no-datasource:
 	ansible-playbook site.yml -i production \
