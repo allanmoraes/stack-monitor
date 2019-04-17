@@ -2,11 +2,11 @@
 #          https://docs.docker.com/compose/install/
 
 ---
- - name: Docker | Run apt-get update
+ - name: APT | Run apt-get update
    apt:
      update_cache: yes
 
- - name: Uninstall old versions
+ - name: APT | Uninstall old versions
    apt:
      name: "{{ packages }}"
      state: absent
@@ -18,7 +18,7 @@
      - containerd 
      - runc
 
- - name: Docker | Install packages to allow apt to use a repository over HTTPS
+ - name: APT | Install packages to allow apt to use a repository over HTTPS
    apt:
      name: "{{ packages }}"
    vars:
@@ -29,24 +29,24 @@
      - gnupg2
      - software-properties-common
 
- - name: Docker | Add Docker’s official GPG key
+ - name: Shell | Add Docker’s official GPG key
    shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
- - name: Docker | Add Docker’s official repository
+ - name: Shell | Add Docker’s official repository
    shell: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
  - name: Run apt-get update
    apt:
      update_cache: yes
 
- - name: Docker | Install the latest version of Docker CE
+ - name: Shell | Install the latest version of Docker CE
    apt:
      name: docker-ce 
 
- - name: Docker | Download Docker Compose
+ - name: Shell | Download Docker Compose
    shell: curl -L "{{ docker_compose_url }}" -o "{{ docker_compose_path }}"
 
- - name: Docker | Apply executable permissions to the binary docker-compose
+ - name: File | Apply executable permissions to the binary docker-compose
    file:
      path: "{{ docker_compose_path }}"
      owner: root

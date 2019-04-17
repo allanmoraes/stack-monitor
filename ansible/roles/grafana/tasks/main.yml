@@ -1,5 +1,5 @@
 ---
- - name: Grafana | Add Grafana user
+ - name: User | Add Grafana user
    user:
     name: "{{ grafana_sys_user }}"
     uid: 3000
@@ -7,7 +7,7 @@
     create_home: yes
     home: "{{ grafana_path }}"
 
- - name: Grafana | Create directory
+ - name: File | Create directory
    file: 
     path: "{{ item }}"
     state: directory
@@ -17,17 +17,17 @@
    with_items:
      - "{{ grafana_volume_data }}"
 
- - name: Grafana | Copy docker-compose.yml
+ - name: Template | Copy docker-compose.yml
    template:
      src: docker-compose.yml.j2
      dest: "{{ grafana_path }}/docker-compose.yml"
 
- - name: Grafana | Docker-compose up container
+ - name: Shell | Docker-compose up container
    shell: docker-compose up -d
    args:
      chdir: "{{ grafana_path }}"
 
- - name: Grafana | Create influxdb datasource
+ - name: Grafana Datasource | Create influxdb datasource
    grafana_datasource:
      name: "Telegraf"
      grafana_url: "http://{{ grafana_address }}"

@@ -1,5 +1,5 @@
 ---
- - name: InfluxDB | Add InfluxDB user
+ - name: User | Add InfluxDB user
    user:
     name: "{{ influx_sys_user }}"
     uid: 4000
@@ -7,7 +7,7 @@
     create_home: yes
     home: "{{ influx_path }}"
 
- - name: InfluxDB | Create directory
+ - name: File | Create directory
    file: 
     path: "{{ item }}"
     state: directory
@@ -17,12 +17,12 @@
    with_items:
      - "{{ influx_volume_data }}"
 
- - name: InfluxDB | Copy docker-compose.yml
+ - name: Template | Copy docker-compose.yml
    template:
      src: docker-compose.yml.j2
      dest: "{{ influx_path }}/docker-compose.yml"
 
- - name: InfluxDB | Docker-compose up container
+ - name: Shell | Docker-compose up container
    shell: docker-compose up -d
    args:
      chdir: "{{ influx_path }}"
