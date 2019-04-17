@@ -29,4 +29,4 @@ deploy-grafana-no-datasource:
 deploy-influx:
 	ansible-playbook site.yml -i production \
                 -t stack \
-                -e "influx_deploy=true" -k -vvv
+                -e "influx_deploy=true" -k
