@@ -44,7 +44,7 @@
      name: docker-ce 
 
  - name: Docker | Download Docker Compose
-   shell: curl -L "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-$(uname -s)-$(uname -m)" -o "{{ docker_compose_path }}"
+   shell: curl -L "{{ docker_compose_url }}" -o "{{ docker_compose_path }}"
 
  - name: Docker | Apply executable permissions to the binary docker-compose
    file:
