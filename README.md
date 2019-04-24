@@ -16,7 +16,7 @@ sudo apt install -y python
 - Ansible na versão 2.5 ou superior, instalado em sua máquina local ou em um servidor
 
 ```bash
-sudo apt install -y ansible
+sudo apt install -y ansible make
 ```
 
 ## Para rodar o Ansible
