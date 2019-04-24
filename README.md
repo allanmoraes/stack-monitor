@@ -13,7 +13,7 @@
 sudo apt install -y python
 ```
 
-- Ansible na versão 2.5 ou superior, instalado em sua máquina local ou em um servidor
+- Ansible na versão 2.5 ou superior e o comando make instalado em sua máquina local ou em um servidor onde executará o Ansible
 
 ```bash
 sudo apt install -y ansible make
