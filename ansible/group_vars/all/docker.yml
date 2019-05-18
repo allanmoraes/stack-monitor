@@ -4,3 +4,4 @@
   docker_compose_url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-$(uname -s)-$(uname -m)"
   docker_compose_path: /usr/local/bin/docker-compose
   docker_deploy: false
+  docker_host: 134.209.217.80

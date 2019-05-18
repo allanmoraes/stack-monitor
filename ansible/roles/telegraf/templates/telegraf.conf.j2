@@ -20,7 +20,7 @@
 ###############################################################################
 
 [[outputs.influxdb]]
-   urls = ["http://{{ influx_address }}:{{ influx_external_port }}"]
+   urls = ["http://{{ docker_host }}:{{ influx_external_port }}"]
    database = "{{ telegraf_db }}"
    skip_database_creation = true
    retention_policy = "autogen"

@@ -2,4 +2,4 @@
 
   telegraf_db: telegraf
   telegraf_user: telegraf
-  telegraf_pass: 
+  telegraf_pass: devopsdays

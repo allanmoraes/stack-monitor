@@ -1,10 +1,9 @@
 --- 
 
   influx_admin_user: admin
-  influx_user_password: 
+  influx_user_password: devopsdays
   influx_external_port: 8086
   influx_path: /home/influxdb
   influx_volume_data: "{{ influx_path }}/data"
   influx_deploy: false
   influx_sys_user: influxdb
-  influx_address: 

@@ -24,8 +24,8 @@ sudo apt install -y ansible make
   - ansible/
     - production
   - ansible/group_vars/all/
-    - influxdb.yml
-      - influx_address
+    - docker.yml
+      - docker_host
 - Trocar as senhas do InfluxDB e Grafana em:
   - ansible/group_vars/all/
     - influxdb.yml

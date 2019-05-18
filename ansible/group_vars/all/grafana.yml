@@ -1,8 +1,8 @@
 ---
 
-  grafana_secutiry_admin_password: 
+  grafana_secutiry_admin_password: devopsdays
   grafana_external_port: 3000
-  grafana_address: "{{ influx_address }}:{{ grafana_external_port }}"
+  grafana_address: "{{ docker_host }}:{{ grafana_external_port }}"
   grafana_path: /home/grafana
   grafana_volume_data: "{{ grafana_path }}/data"
   grafana_deploy: false
