@@ -27,6 +27,13 @@
    args:
      chdir: "{{ grafana_path }}"
 
+ - name: Ansible Wait | Wait Grafana Service wake up
+   wait_for:
+     host: "{{ influx_address }}"
+     port: "{{ grafana_external_port }}"
+     delay: 10
+     state: drained
+
  - name: Grafana Datasource | Create influxdb datasource
    grafana_datasource:
      name: "Telegraf"
