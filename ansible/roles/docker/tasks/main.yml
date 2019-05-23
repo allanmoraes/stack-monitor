@@ -48,10 +48,5 @@
      url: "{{ docker_compose_url }}"
      dest: "{{ docker_compose_path }}"
      validate_certs: no
-
- - name: File | Apply executable permissions to the binary docker-compose
-   file:
-     path: "{{ docker_compose_path }}"
      owner: root
-     group: root
-     mode: 0750
+     mode: '0750'
