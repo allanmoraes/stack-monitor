@@ -43,8 +43,11 @@
    apt:
      name: docker-ce 
 
- - name: Shell | Download Docker Compose
-   shell: curl -L "{{ docker_compose_url }}" -o "{{ docker_compose_path }}"
+ - name: Get_URL | Download Docker Compose
+   get_url: 
+     url: "{{ docker_compose_url }}"
+     dest: "{{ docker_compose_path }}"
+     validate_certs: no
 
  - name: File | Apply executable permissions to the binary docker-compose
    file:
