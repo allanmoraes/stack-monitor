@@ -39,7 +39,7 @@
    apt:
      update_cache: yes
 
- - name: Shell | Install the latest version of Docker CE
+ - name: APT | Install the latest version of Docker CE
    apt:
      name: docker-ce 
 
