@@ -43,10 +43,12 @@
    apt:
      name: docker-ce 
 
- - name: Get_URL | Download Docker Compose
-   get_url: 
-     url: "{{ docker_compose_url }}"
-     dest: "{{ docker_compose_path }}"
-     validate_certs: no
+ - name: Shell | Download Docker Compose
+   shell: curl -L "{{ docker_compose_url }}" -o "{{ docker_compose_path }}"
+
+ - name: File | Apply executable permissions to the binary docker-compose
+   file:
+     path: "{{ docker_compose_path }}"
      owner: root
-     mode: '0750'
+     group: root
+     mode: 0750
