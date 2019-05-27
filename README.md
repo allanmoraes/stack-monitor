@@ -2,8 +2,6 @@
 
 ## Automatizando o Monitoramento de Infraestrutura
 
-[Slides](https://google.com)
-
 ---
 
 ## O que precisamos?
