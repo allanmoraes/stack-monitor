@@ -1,6 +1,4 @@
-# DevOpsDaysPOA 2019
-
-## Automatizando o Monitoramento de Infraestrutura
+Um conjunto de Playbooks do Ansible que configuram de forma automática uma stack de monitoramento.
 
 ---
 
