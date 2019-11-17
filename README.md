@@ -1,4 +1,4 @@
-Um conjunto de Playbooks do Ansible que configuram de forma automática uma stack de monitoramento.
+Um conjunto de Playbooks do Ansible que configuram de forma automática uma stack de monitoramento básico
 
 ---
 
@@ -6,10 +6,10 @@ Um conjunto de Playbooks do Ansible que configuram de forma automática uma stac
 - Dois servidores Ubuntu com o Python instalado.
 
 ```bash
-sudo apt install -y python
+sudo apt install -y python python-apt
 ```
 
-- Ansible na versão 2.5 ou superior e o comando make instalado em sua máquina local ou em um servidor onde executará o Ansible
+- Ansible na versão 2.7 ou superior e o comando make instalado.
 
 ```bash
 sudo apt install -y ansible make
@@ -19,9 +19,6 @@ sudo apt install -y ansible make
 - Adicionar os IPs dos servidores no inventário em 
   - ansible/
     - production
-  - ansible/group_vars/all/
-    - docker.yml
-      - docker_host
 - Trocar as senhas do InfluxDB e Grafana em:
   - ansible/group_vars/all/
     - influxdb.yml
@@ -29,6 +26,7 @@ sudo apt install -y ansible make
       - influx_address
     - grafana.yml
       - grafana_secutiry_admin_password
+      - grafana_dashboard_uid
     - telegraf.yml
       - telegraf_pass
 - Rodar o playbook:
