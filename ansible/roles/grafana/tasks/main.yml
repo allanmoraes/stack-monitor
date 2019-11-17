@@ -22,6 +22,11 @@
      src: docker-compose.yml.j2
      dest: "{{ grafana_path }}/docker-compose.yml"
 
+ - name: Copy | Copy Json's dashboard
+   copy:
+     src: dashboard.json
+     dest: "{{ grafana_path }}/dashboard.json"
+
  - name: Shell | Docker-compose up container
    shell: docker-compose up -d
    args:
@@ -48,5 +53,17 @@
      password: "{{ telegraf_pass }}"
      with_credentials: "yes"
      time_interval: ">10s"
+   when:
+     - grafana_create_datasource
+
+ - name: Grafana Dashboard | Create default Dashboard
+   grafana_dashboard:
+     grafana_url: "http://{{ grafana_address }}"
+     grafana_user: "admin"
+     grafana_password: "{{ grafana_secutiry_admin_password }}"
+     state: present
+     uid: "{{ grafana_dashboard_uid }}"
+     overwrite: yes
+     path: "{{ grafana_path }}/dashboard.json"
    when:
      - grafana_create_datasource
