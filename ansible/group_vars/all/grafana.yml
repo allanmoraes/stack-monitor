@@ -8,3 +8,4 @@
   grafana_deploy: false
   grafana_sys_user: grafana
   grafana_create_datasource: false
+  grafana_dashboard_uid: Iqw--kMWz
