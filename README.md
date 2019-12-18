@@ -1,5 +1,6 @@
 Um conjunto de Playbooks do Ansible que configuram de forma automática uma stack de monitoramento básico
 
+[Slides](https://s3-sa-east-1.amazonaws.com/thedevconf/presentations/TDC2019POA/containers/HYT-5307_2019-11-30T050854_Docker%20e%20Ansible%20para%20automatizar%20o%20monitoramento.pdf)
 ---
 
 ## O que precisamos?
